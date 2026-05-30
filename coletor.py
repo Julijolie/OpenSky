@@ -6,7 +6,7 @@ from datetime import datetime
 BRASIL = [-33.75, 5.27, -73.98, -34.79]
 
 def pegar_voos():
-    url = "https://opensky-network.org/api/states/all" """voos em tempo real"""
+    url = "https://opensky-network.org/api/states/all" #voos em tempo real"""
     params = {
         "lamin": BRASIL[0],
         "lamax": BRASIL[1],
@@ -15,7 +15,7 @@ def pegar_voos():
     }
 
     try:
-        resposta = resquests.get(url, params=params, timeout=10)
+        resposta = requests.get(url, params=params, timeout=10)
         if resposta.status_code == 200: #funciona!
             dados=resposta.json()
             voos=dados.get("states", [])
@@ -27,3 +27,16 @@ def pegar_voos():
     except Exception as e: #erro de conexão, incluso timout>10
         print(f"Falha: {e}")
         return []
+
+def salvar_dados(voos):
+    nome=f"dados_{datetime.now().strftime('%Y%m%d_%H%M')}.json"
+    with open(nome, "w") as f:
+        json.dump(voos, f, indent=2)
+        print(f"salvo: {nome}")
+        return nome
+    
+if __name__ == "__main__":
+    print("Buscando voos...")
+    voos=pegar_voos()
+    if voos:
+        salvar_dados(voos)
