@@ -45,4 +45,4 @@ if __name__ == "__main__":
         for i, (voo, count) in enumerate(resultado[:10], 1):
             print(f"{i:2}. {voo:15} | {count:3} ocorrências")
         
-        print(f"\n📊 Total de voos únicos: {len(resultado)}")
+        print(f"\nTotal de voos únicos: {len(resultado)}")
