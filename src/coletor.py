@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 from datetime import datetime
 
 # [lamin, lamax, lomin, lomax]
@@ -29,9 +30,9 @@ def pegar_voos():
         return []
 
 def salvar_dados(voos):
-    nome=f"dados_{datetime.now().strftime('%Y%m%d_%H%M')}.json"
-    with open(nome, "w") as f:
-        json.dump(voos, f, indent=2)
+    nome=f"dados/dados_{datetime.now().strftime('%Y%m%d_%H%M')}.json" #salvando diretamente na pasta dados!
+    with open(nome, "w") as f: #with fecha automaticamente quando sair do bloco
+        json.dump(voos, f, indent=2) #Aqui escrevo os dados de voos em formato JSON no arquivo f, com indentação de 2 espaços
         print(f"salvo: {nome}")
         return nome
     

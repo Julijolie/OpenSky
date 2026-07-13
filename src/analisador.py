@@ -3,7 +3,7 @@ import glob #buscas e padrão de arquivos
 from collections import Counter
 
 def carregar_ultimo_arquivo():
-    arquivos=glob.glob("dados_*.json") 
+    arquivos=glob.glob("dados/dados_*.json") 
     if not arquivos:
         print("Nenhum arquivo encotrado. Execute o arquivo coletor.py primeiro!")
         return None
