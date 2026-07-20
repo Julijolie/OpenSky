@@ -1,4 +1,4 @@
-# ✈️ OpenSky - Sistema de Monitoramento de Tráfego Aéreo
+# OpenSky - Sistema de Monitoramento de Tráfego Aéreo
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -8,11 +8,11 @@
 
 ---
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto implementa um sistema completo de monitoramento de tráfego aéreo utilizando a API pública da [OpenSky Network](https://opensky-network.org/). Ele coleta dados de voos em tempo real sobre o Brasil, identifica rotas congestionadas e detecta anomalias em altitudes.
 
-### 🎯 Objetivos
+### Objetivos
 
 - ✅ Coletar dados de voos em tempo real via API REST
 - ✅ Identificar as rotas mais congestionadas do espaço aéreo brasileiro
@@ -22,7 +22,7 @@ Este projeto implementa um sistema completo de monitoramento de tráfego aéreo 
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia  | Versão | Finalidade                     |
 | ----------- | ------ | ------------------------------ |
@@ -35,7 +35,7 @@ Este projeto implementa um sistema completo de monitoramento de tráfego aéreo 
 
 ---
 
-## 🛠️ Instalação e Configuração
+## Instalação e Configuração
 
 ### 1. Clonar o repositório
 
