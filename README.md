@@ -14,11 +14,11 @@ Este projeto implementa um sistema completo de monitoramento de tráfego aéreo 
 
 ### Objetivos
 
-- ✅ Coletar dados de voos em tempo real via API REST
-- ✅ Identificar as rotas mais congestionadas do espaço aéreo brasileiro
-- ✅ Detectar anomalias como quedas bruscas de altitude
-- ✅ Gerar relatórios e visualizações para análise
-- ✅ Criar uma base de dados histórica para estudos futuros
+- Coletar dados de voos em tempo real via API REST
+- Identificar as rotas mais congestionadas do espaço aéreo brasileiro
+- Detectar anomalias como quedas bruscas de altitude
+- Gerar relatórios e visualizações para análise
+- Criar uma base de dados histórica para estudos futuros
 
 ---
 
