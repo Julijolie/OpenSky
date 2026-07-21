@@ -1,19 +1,21 @@
 import json
-import glob
+import glob #encontra arquivos e pastas que seguem um padrão
 from collections import Counter
 
 def verificar_callsign(callsign_procurado):
-    arquivos = glob.glob("dados_*.json")
+    arquivos = glob.glob("dados/dados_*.json")
     if not arquivos:
         print("Nenhum arquivo encontrado!")
         return
     
-    ultimo = max(arquivos)
-    print(f"Analisando: {ultimo}\n")
-    
-    with open(ultimo, "r") as f:
-        voos = json.load(f)
-
+    print(f"analisando {len(arquivos)} arquivos...\n")
+    todos_voos = []
+    for arquivo in sorted(arquivos): #ordena uma lista e retorna uma nova lista ordenada, sem modificar a original.
+        print(f"{arquivo}")
+        with open(arquivo, "r") as f:
+            voos = json.load(f) #Aqui eu Converti o JSON em um dicionário
+            todos_voos.extend(voos) 
+        voos = todos_voos
     contagem = 0
     for voo in voos:
         callsign = voo[1]  
@@ -35,7 +37,7 @@ def verificar_callsign(callsign_procurado):
             print(f"  - Velocidade: {voo[9]} m/s")
             break
     
-    print("\n**TOP 10 CALLSIGNS:**")
+    print(f"\n**TOP 10 CALLSIGNS (de {len(arquivos)} arquivos):**")
     todos_callsigns = []
     for voo in voos:
         if voo[1] and voo[1].strip():  # Se o callsign existe E não é vazio
