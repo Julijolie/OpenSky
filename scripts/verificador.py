@@ -8,25 +8,34 @@ def verificar_callsign(callsign_procurado):
         print("Nenhum arquivo encontrado!")
         return
     
-    print(f"analisando {len(arquivos)} arquivos...\n")
-    todos_voos = []
+    print(f"\nTotal de arquivos analisados: {len(arquivos)} \n")
+    todos_voos_com_arquivo = []
     for arquivo in sorted(arquivos): #ordena uma lista e retorna uma nova lista ordenada, sem modificar a original.
-        print(f"{arquivo}")
         with open(arquivo, "r") as f:
             voos = json.load(f) #Aqui eu Converti o JSON em um dicionário
-            todos_voos.extend(voos) 
-        voos = todos_voos
+            for voo in voos:
+                todos_voos_com_arquivo.append((voo, arquivo))
+        voos = [voo for voos, _ in todos_voos_com_arquivo] #crio uma nova lsta só com os voos e ignorando (_) o nome do arquivo
+    
     contagem = 0
-    for voo in voos:
+    arquivos_encontrados = set() #Guardo os nomes dos arquivos sem repetir
+
+    for voo, arquivo in todos_voos_com_arquivo:
         callsign = voo[1]  
         if callsign and callsign.strip():
             if callsign.strip() == callsign_procurado:
                 contagem += 1
+                arquivos_encontrados.add(arquivo)
     
-    print(f"Procurando por: '{callsign_procurado}'")
-    print(f"Encontrado: {contagem} vezes")
+    print(f"O callsign '{callsign_procurado}' foi localizado em {contagem} arquivos diferentes.")
     
-    # Mostra informações do primeiro voo encontrado
+    if arquivos_encontrados:
+        print(f"\nArquivos onde o callsign foi encontrado:")
+        for arquivo in sorted(arquivos_encontrados):
+            print(f"{arquivo}")
+    else:
+        print(f"\nCallsign não encontrado em nenhum arquivo!")
+
     for voo in voos:
         callsign = voo[1] if voo[1] else ""
         if callsign.strip() == callsign_procurado:
@@ -39,7 +48,7 @@ def verificar_callsign(callsign_procurado):
     
     print(f"\n**TOP 10 CALLSIGNS (de {len(arquivos)} arquivos):**")
     todos_callsigns = []
-    for voo in voos:
+    for voo, _ in todos_voos_com_arquivo:
         if voo[1] and voo[1].strip():  # Se o callsign existe E não é vazio
             callsign_limpo = voo[1].strip()
             todos_callsigns.append(callsign_limpo)
