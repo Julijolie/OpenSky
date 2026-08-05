@@ -3,10 +3,10 @@ import os
 import time
 from datetime import datetime
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src')) # add a pasta src ao caminho
-from coletor import pegar_voos, salvar_dados
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src')) 
+from coletor import pegar_voos, salvar_dados #A ordem das linhas importam!
 
-def coleta_automatica(intervalo_minutos=60): #Coleta dados automaticamente no intervalor de 60 minutos
+def coleta_automatica(intervalo_minutos=30): #Espere 30 minutos entre cada coleta SE O PARAMETRO NÃO FOR PASSADO NA INVOCAÇÃO DA FUNÇÃO
     print("COLETA AUTOMÁTICA INICIADA")
     print(f"Intervalo: {intervalo_minutos} minutos")
     print("Pressione Ctrl+C para interromper\n")
@@ -33,5 +33,4 @@ def coleta_automatica(intervalo_minutos=60): #Coleta dados automaticamente no in
         print(f"Total de coletas: {contador}")
 
 if __name__ == "__main__":
-    # Para teste rápido: 5 minutos
-    coleta_automatica(intervalo_minutos=5)
+    coleta_automatica(intervalo_minutos=5) #COLETA A CADA 5 MINUTOS
